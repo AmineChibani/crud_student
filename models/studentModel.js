@@ -58,10 +58,13 @@ class StudentModel {
             Password = ?, 
             Etat = ?, 
             Cartier = ? 
-        WHERE Id_student = "${id}"
+        WHERE Id_student = ?
       `;
-      database.query(query, Object.values(studentData), (error, data) => {
+      const values = [...Object.values(studentData), id]; // Include the id
+
+      database.query(query, values, (error, data) => {
         if (error) {
+          console.error('Error updating student:', error);
           reject(error);
         } else {
           resolve(data);
@@ -69,6 +72,8 @@ class StudentModel {
       });
     });
   }
+
+
 
   static deleteStudent(id) {
     return new Promise((resolve, reject) => {
