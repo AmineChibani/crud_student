@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var studentRouter = require('./routes/studentRoute')
+var studentRouter = require('./routes/studentRouter')
 
 var app = express();
 
@@ -19,10 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/dashboard_student',studentRouter);
+app.use('/students', studentRouter);
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-store');

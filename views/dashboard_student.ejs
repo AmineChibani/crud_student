@@ -139,7 +139,6 @@
     </div>
 
     <script>
-        console.log("hello world");
 
         $(document).ready(function () {
 
@@ -147,7 +146,7 @@
 
             function load_data() {
                 $.ajax({
-                    url: "http://localhost:3000/dashboard_student/action",
+                    url: "http://localhost:3000/students/dashboard_student/action",
                     method: "POST",
                     data: { action: 'fetch' },
                     dataType: "JSON",
@@ -204,7 +203,7 @@
                 event.preventDefault();
 
                 $.ajax({
-                    url: "http://localhost:3000/dashboard_student/action",
+                    url: "http://localhost:3000/students/dashboard_student/action",
                     method: "POST",
                     data: $('#student_form').serialize(),
                     dataType: "JSON",
@@ -241,7 +240,7 @@
                 $('#action_modal').modal('show');
 
                 $.ajax({
-                    url: "http://localhost:3000/dashboard_student/action",
+                    url: "http://localhost:3000/students/dashboard_student/action",
                     method: "POST",
                     data: { id: id, action: 'fetch_single' },
                     dataType: "JSON",
@@ -268,7 +267,7 @@
 
                 if (confirm("Are you sure you want to delete this data?")) {
                     $.ajax({
-                        url: "http://localhost:3000/dashboard_student/action",
+                        url: "http://localhost:3000/students/dashboard_student/action",
                         method: "POST",
                         data: { action: 'delete', id: id },
                         dataType: "JSON",
